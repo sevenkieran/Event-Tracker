@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -64,23 +64,4 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
   }
-}
- 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
-.bg-background {
-  background-image:
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.005) 0, rgba(255, 255, 255, 0.005) 1px, transparent 1px),
-    linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
-    background-size: 10px 10px; /* sets size of the grid */
-    background-attachment: fixed;
-    background-color: rgb(31 41 55) /* desired base color -> old: rgb(31 41 55) */
 }
