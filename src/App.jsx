@@ -24,7 +24,7 @@ function App() {
       </ul>
       <Routes>
         <Route path="/HomePage" element={<HomePage />}></Route>
-        <Route path="/Event" element={<Event />}></Route>
+        <Route path="/Event/*" element={<Event />}></Route>
         <Route path="/Home" element={<Home />}></Route>
       </Routes>
     </Router>

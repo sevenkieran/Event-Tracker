@@ -1,5 +1,5 @@
 import {React, useState} from "react";
-import { Link, BrowserRouter as Router, Route } from "react-router-dom";
+import { Link, BrowserRouter as Router, Route} from "react-router-dom";
 import "../index.css";
 
 /*function HomePage() {
@@ -87,7 +87,7 @@ function App() {
           <ul>
             {events.map((event) => (
               <li key={event.id} className="text-white">
-                <Link to={`/Event/${event.id}`}>{event.name} - {event.dates.start.localDate}</Link>
+                <Link to={`/Event/${event.id}`} state={{"event": event}}>{event.name} - {event.dates.start.localDate}</Link>
               </li>
             ))}
           </ul>
