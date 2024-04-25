@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../index.css";
+import Event from "./Event";
 
 function App() {
   const [location, setLocation] = useState("");
@@ -29,7 +30,8 @@ function App() {
 
       if (response.ok) {
         setEvents(data._embedded.events);
-        console.log(data._embedded.events);
+        // console.log(data._embedded.events[1]);
+        console.log(data._embedded.events.ima);
       } else {
         throw new Error(data.message || "Failed to fetch events");
       }
@@ -72,6 +74,9 @@ function App() {
             ))}
           </ul>
         )}
+        <div className="p-5">
+          <Event data={events} />
+        </div>
       </div>
     </div>
   );
