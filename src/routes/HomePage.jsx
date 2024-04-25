@@ -61,7 +61,7 @@ function App() {
   };
 
   return (
-    <div className="bg-slate-600 h-screen">
+    <div className="bg-slate-600">
       <div className="p-10">
         <h1 className="text-white p-2 text-xl font-bold">Event Tracker</h1>
         <form onSubmit={handleSubmit}>
@@ -87,7 +87,12 @@ function App() {
           <ul>
             {events.map((event) => (
               <li key={event.id} className="text-white">
-                <Link to={`/Event/${event.id}`} state={{"event": event}}>{event.name} - {event.dates.start.localDate}</Link>
+                <div className="m-2 border-solid border-2 border-black bg-white object-scale-down h-40 w-45">
+                  <Link className="" to={`/Event/${event.id}`} state={{"event": event}}>
+                    {event.name} - {event.dates.start.localDate}
+                    <a><img classname=""src={event.images[2].url}></img></a>
+                  </Link>
+                </div>
               </li>
             ))}
           </ul>
