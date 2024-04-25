@@ -29,6 +29,7 @@ function App() {
 
       if (response.ok) {
         setEvents(data._embedded.events);
+        console.log(data._embedded.events);
       } else {
         throw new Error(data.message || "Failed to fetch events");
       }
@@ -40,7 +41,7 @@ function App() {
   };
 
   return (
-    <div className="bg-slate-600 h-screen">
+    <div className="bg-slate-700 h-screen">
       <div className="p-10">
         <h1 className="text-white p-2 text-xl font-bold">Event Tracker</h1>
         <form onSubmit={handleSubmit}>
