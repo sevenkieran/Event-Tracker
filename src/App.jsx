@@ -15,7 +15,7 @@ function App() {
         <ul>
           <li>
             <Link
-              to="/HomePage"
+              to="/"
               className="my-4 mx-5 text-white border-input hover:bg-white hover:text-accent-foreground inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 px-1 ease-out duration-500"
             >
               Home
@@ -23,7 +23,7 @@ function App() {
           </li>
         </ul>
         <Routes>
-          <Route path="/HomePage" element={<HomePage />}></Route>
+          <Route path="/" element={<HomePage />}></Route>
           <Route path="/Event/*" element={<Event />}></Route>
           <Route path="/Home" element={<Home />}></Route>
         </Routes>
