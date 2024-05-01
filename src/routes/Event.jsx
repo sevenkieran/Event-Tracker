@@ -5,7 +5,7 @@ function Event() {
   const location = useLocation();
 
   const event = location.state.event;
-  const image = event.images[0];
+  const image = event.images[2];
   console.log(event);
 
   return (
