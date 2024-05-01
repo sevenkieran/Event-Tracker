@@ -61,7 +61,7 @@ function App() {
   };
 
   return (
-    <div className="bg-slate-700 h-screen">
+    <div className="bg-slate-700 h-screen max-w-screen">
       <div className="p-10">
         <h1 className="text-white p-2 text-xl font-bold">Event Tracker</h1>
         <form onSubmit={handleSubmit}>
@@ -83,8 +83,8 @@ function App() {
         </form>
       </div>
       <div className="max-w-screen overflow-x-auto">
-        {loading && <p>Loading...</p>}
-        {error && <p>Error: {error}</p>}
+        {loading && <p className="text-white">Loading...</p>}
+        {error && <p className="text-white">Error: {error}</p>}
         {!loading && !error && events.length > 0 && (
           <ul>
             {events.map((event) => (

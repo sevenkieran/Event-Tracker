@@ -20,6 +20,20 @@ function Event() {
       </div>
       <h2 className="text-lg font-bold">Description</h2>
       <p>{event.description || "No description available."}</p>
+      <h2>Venue: {event._embedded.venues[0].name}</h2>
+      <h2>Address: {event._embedded.venues[0].address.line1}</h2>
+      <h2>City: {event._embedded.venues[0].city.name}</h2>
+      <h2>
+        Link to Tickets:{" "}
+        <a
+          className="text-blue-500 hover:underline"
+          href={event._embedded.venues[0].url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {event._embedded.venues[0].name}
+        </a>
+      </h2>
     </div>
   );
 }
