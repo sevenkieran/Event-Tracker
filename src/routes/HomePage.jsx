@@ -60,6 +60,34 @@ function App() {
     }
   };
 
+  const loadMoreEvents = async () => {
+    setLoading(true);
+    setError(null);
+    const API_KEY = import.meta.env.VITE_API_KEY;
+    const BASE_URL = "https://app.ticketmaster.com/discovery/v2/events.json";
+    try {
+      const url = new URL(BASE_URL);
+      url.search = new URLSearchParams({
+        apikey: API_KEY,
+        size: 10,
+        keyword: location,
+        sort: "date,asc",
+        page: Math.ceil(events.length / 10) + 1,
+      });
+      const response = await fetch(url);
+      const data = await response.json();
+      if (response.ok) {
+        setEvents(events.concat(data._embedded.events));
+      } else {
+        throw new Error(data.message || "Failed to fetch events");
+      }
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="">
       <div className="p-10 bg-slate-600">
@@ -83,23 +111,31 @@ function App() {
         </form>
       </div>
       <div>
-        {loading && <p>Loading...</p>}
-        {error && <p>Error: {error}</p>}
-        {!loading && !error && events.length > 0 && (
-          <ul>
-            {events.map((event) => (
-              <li key={event.id}>
-                  <Link className='text-black text-3xl w-full h-40 flex justify-start m-2 border-solid border-2 border-slate-600 bg-white'to={`/Event/${event.id}`} state={{"event": event}}>
-                    <img className="object-contain"src={event.images[2].url}/>
-                    {event.name} - {event.dates.start.localDate}
-                  </Link>
-              </li>
-            ))}
-          </ul>
-        )}
+          <div>
+            <ul>
+              {events.map((event) => (
+                <li key={event.id}>
+                    <Link className='text-black text-3xl w-full h-40 flex justify-start m-2 border-solid border-2 border-slate-600 bg-white'to={`/Event/${event.id}`} state={{"event": event}}>
+                      <img className="object-contain"src={event.images[2].url}/>
+                      {event.name} - {event.dates.start.localDate}
+                    </Link>
+                </li>
+              ))}
+            </ul>
+            {loading && <p>Loading...</p>}
+            {error && <p>{error}</p>}
+            {!loading && events.length > 0 && (
+              <button onClick={loadMoreEvents}>Load more</button>
+            )}
+          </div>
       </div>
     </div>
   );
+  
 }
+
+
+
+
 
 export default App;
