@@ -1,12 +1,34 @@
-import React from "react";
+import {React, useState, useEffect} from "react";
 import { useLocation } from "react-router-dom";
 
 function Event() {
   const location = useLocation();
+  const [weather, setWeather] = useState("No weather data for this event");
 
   const event = location.state.event;
   const image = event.images[2];
   console.log(event);
+
+  function fetchWeatherData() {
+    const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
+    const apiUrl = `https://api.tomorrow.io/v4/weather/forecast?location=${event._embedded.venues[0].city.name}&units=imperial&apikey=${apiKey}`;
+  
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        for (let i = 0; i < data.timelines.daily.length; i++) {
+          if (data.timelines.daily[i].time.includes(event.dates.start.localDate))
+            setWeather(data.timelines.daily[i].values.temperatureAvg);
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching weather data:', error);
+      });
+  }
+
+  useEffect(() => {
+    fetchWeatherData();
+  }, []);
 
   return (
     <div className="bg-slate-700 h-screen text-white px-5">
@@ -23,6 +45,9 @@ function Event() {
       <h2>Venue: {event._embedded.venues[0].name}</h2>
       <h2>Address: {event._embedded.venues[0].address.line1}</h2>
       <h2>City: {event._embedded.venues[0].city.name}</h2>
+      <h2>Average Temperature in F: {weather}</h2>
+      <h2>Price Range: ${event.priceRanges[0].min} - ${event.priceRanges[0].max}</h2>
+
       <h2>
         Link to Tickets:{" "}
         <a
