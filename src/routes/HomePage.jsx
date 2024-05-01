@@ -69,7 +69,7 @@ function App() {
   };
 
   return (
-    <div className="bg-slate-700 h-screen max-w-screen">
+    <div className="bg-slate-700 h-full min-h-screen max-w-screen">
       <div className="p-10">
         <h1 className="text-white p-2 text-xl font-bold">Event Tracker</h1>
         <form onSubmit={handleSubmit}>
@@ -84,7 +84,7 @@ function App() {
           />
           <button
             type="submit"
-            className="mx-4 text-white border-input hover:bg-white hover:text-accent-foreground inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 px-1 ease-out duration-500"
+            className="mx-4 text-white border-input hover:bg-slate-900 hover:text-accent-foreground inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 px-1 ease-out duration-500"
           >
             Submit
           </button>
@@ -95,7 +95,7 @@ function App() {
             <ul>
               {events.map((event) => (
                 <li key={event.id}>
-                    <Link className='text-black text-3xl w-full h-40 flex justify-start m-2 border-solid border-2 border-slate-600 bg-white'to={`/Event/${event.id}`} state={{"event": event}}>
+                    <Link className='text-black text-2xl w-11/12 h-40 flex justify-start m-2 border-solid border-2 border-slate-800 bg-white'to={`/Event/${event.id}`} state={{"event": event}}>
                       <img className="object-contain"src={event.images[2].url}/>
                       {event.name} - {event.dates.start.localDate}
                     </Link>
@@ -105,7 +105,9 @@ function App() {
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
             {!loading && events.length > 0 && (
-              <button onClick={loadMoreEvents}>Load more</button>
+              <div className="flex justify-center">
+                <button className="text-white border-input hover:bg-slate-900 hover:text-accent-foreground inline-flex items-center justify-center whitespace-nowrap rounded-md text-2xl font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 px-1 ease-out duration-500" onClick={loadMoreEvents}>Load more</button>
+              </div>
             )}
           </div>
       </div>
