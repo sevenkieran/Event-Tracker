@@ -1,5 +1,5 @@
-import {React, useState} from "react";
-import { Link, BrowserRouter as Router, Route} from "react-router-dom";
+import { React, useState } from "react";
+import { Link, BrowserRouter as Router, Route } from "react-router-dom";
 import "../index.css";
 
 /*function HomePage() {
@@ -61,8 +61,8 @@ function App() {
   };
 
   return (
-    <div className="">
-      <div className="p-10 bg-slate-600">
+    <div className="bg-slate-700 h-screen">
+      <div className="p-10">
         <h1 className="text-white p-2 text-xl font-bold">Event Tracker</h1>
         <form onSubmit={handleSubmit}>
           <input
@@ -76,7 +76,7 @@ function App() {
           />
           <button
             type="submit"
-            className="mx-4 text-blue border-input hover:bg-grey hover:text-accent-foreground inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 px-1 ease-out duration-500"
+            className="mx-4 text-white border-input hover:bg-white hover:text-accent-foreground inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 px-1 ease-out duration-500"
           >
             Submit
           </button>
@@ -89,10 +89,14 @@ function App() {
           <ul>
             {events.map((event) => (
               <li key={event.id}>
-                  <Link className='text-black text-3xl w-full h-40 flex justify-start m-2 border-solid border-2 border-slate-600 bg-white'to={`/Event/${event.id}`} state={{"event": event}}>
-                    <img className="object-contain"src={event.images[2].url}/>
-                    {event.name} - {event.dates.start.localDate}
-                  </Link>
+                <Link
+                  className="text-black text-3xl w-full h-40 flex justify-start m-2 border-solid border-2 border-slate-600 bg-white"
+                  to={`/Event/${event.id}`}
+                  state={{ event: event }}
+                >
+                  <img className="object-contain" src={event.images[2].url} />
+                  {event.name} - {event.dates.start.localDate}
+                </Link>
               </li>
             ))}
           </ul>

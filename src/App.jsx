@@ -10,26 +10,26 @@ import Home from "./routes/Home";
 
 function App() {
   return (
-    <Router>
-      <ul>
-        <li>
-          <Link to="/HomePage">This is home</Link>
-        </li>
-        <li>
-          <Link to="/Event">Test</Link>
-        </li>
-        <li>
-          <Link to="/Home">Home</Link>
-        </li>
-      </ul>
-      <Routes>
-        <Route path="/HomePage" element={<HomePage />}></Route>
-        <Route path="/Event/*" element={<Event />}></Route>
-        <Route path="/Home" element={<Home />}></Route>
-      </Routes>
-    </Router>
+    <div className="bg-slate-700 h-screen">
+      <Router>
+        <ul>
+          <li>
+            <Link
+              to="/HomePage"
+              className="my-4 mx-5 text-white border-input hover:bg-white hover:text-accent-foreground inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 px-1 ease-out duration-500"
+            >
+              Home
+            </Link>
+          </li>
+        </ul>
+        <Routes>
+          <Route path="/HomePage" element={<HomePage />}></Route>
+          <Route path="/Event/*" element={<Event />}></Route>
+          <Route path="/Home" element={<Home />}></Route>
+        </Routes>
+      </Router>
+    </div>
   );
-  //<div className="body-background"></div>;
 }
 
 export default App;
