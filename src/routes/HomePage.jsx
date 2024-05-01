@@ -82,7 +82,7 @@ function App() {
           </button>
         </form>
       </div>
-      <div>
+      <div className="max-w-screen overflow-x-auto">
         {loading && <p>Loading...</p>}
         {error && <p>Error: {error}</p>}
         {!loading && !error && events.length > 0 && (
