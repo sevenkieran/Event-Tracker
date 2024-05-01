@@ -19,7 +19,6 @@ function App() {
       </Router>
     </div>
   );
-  //<div className="body-background"></div>;
 }
 
 export default App;
