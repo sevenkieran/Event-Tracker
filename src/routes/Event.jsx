@@ -46,7 +46,6 @@ function Event() {
       <h2>Address: {event._embedded.venues[0].address.line1}</h2>
       <h2>City: {event._embedded.venues[0].city.name}</h2>
       <h2>Average Temperature in F: {weather}</h2>
-      <h2>Price Range: ${event.priceRanges[0].min} - ${event.priceRanges[0].max}</h2>
 
       <h2>
         Link to Tickets:{" "}
