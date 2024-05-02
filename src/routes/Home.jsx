@@ -30,7 +30,6 @@ function App() {
 
       if (response.ok) {
         setEvents(data._embedded.events);
-        // console.log(data._embedded.events[1]);
         console.log(data._embedded.events.ima);
       } else {
         throw new Error(data.message || "Failed to fetch events");
