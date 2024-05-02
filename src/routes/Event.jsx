@@ -31,7 +31,7 @@ function Event() {
   }, []);
 
   return (
-    <div className="bg-slate-700 h-screen text-white px-5">
+    <div className="bg-slate-700 h-full min-h-screen text-white px-5">
       <h1 className="text-xl p-3 font-bold">{event.name}</h1>
       <div className="flex justify-center m-5">
         <img
